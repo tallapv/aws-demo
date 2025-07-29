@@ -28,4 +28,4 @@ def home():
     return render_template('home.html', current_date=current_date, system_id=system_id, private_ip=private_ip)
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8000)
+    app.run(debug=True, host='0.0.0.0', port=80)

@@ -35,12 +35,16 @@
 <body>
 
     <h1>Careers at Thinknyx Technologies</h1>
-    <p>We are always looking for talented individuals to join our team! Upload your resume below:</p>
+    <p>We are always looking for talented individuals to join our team! Please fill in your details and upload your resume below:</p>
 
     <!-- File Upload Form -->
     <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <label for="name">Your Name:</label><br><br>
+        <input type="text" name="name" id="name" required><br><br>
+
         <label for="file">Choose a file to upload:</label><br><br>
         <input type="file" name="file" id="file" required><br><br>
+
         <button type="submit">Upload</button>
     </form>
 

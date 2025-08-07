@@ -19,7 +19,7 @@ S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 # Initialize RDS connection (using IAM Role for credentials)
 rds_host = os.getenv('RDS_HOST')  # RDS endpoint URL
-rds_db_name = 'thinknyx'
+rds_db_name = 'python-app-db-1'
 rds_user = os.getenv('RDS_USER')  # Postgres username
 rds_port = '5432'  # Default PostgreSQL port
 secret_name = os.getenv('SECRET_NAME') # Secret to Read postgres password from
@@ -96,7 +96,7 @@ def careers():
         user_experience = request.form.get('experience')
         user_position = request.form.get('position')
         user_ctc = request.form.get('ctc')
-        user_phone_number = request.form.get('phone_number')
+        user_phone_number = request.form.get('phone')
         user_expected_ctc = request.form.get('expected_ctc')
 
         # Handle file upload
@@ -143,3 +143,4 @@ def careers():
 
     # Render the careers page template
     return render_template('careers.html')
+

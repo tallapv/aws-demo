@@ -8,6 +8,9 @@ from botocore.exceptions import NoCredentialsError, ClientError
 import time
 import json
 
+# Import the send_sns_notification function from notifications.py
+from notifications import send_sns_notification
+
 # Initialize the S3 client
 s3_client = boto3.client(
     's3',
@@ -30,7 +33,6 @@ secrets_client = boto3.client('secretsmanager', region_name=os.getenv('AWS_REGIO
 # Function to get RDS password from Secrets Manager
 def get_rds_password():
     try:
-        #secret_name = "rds!db-0e9fe2e2-9575-4c17-bf60-4def1d38a32f"
         get_secret_value_response = secrets_client.get_secret_value(SecretId=secret_name)
         secret = get_secret_value_response['SecretString']
         secret_dict = json.loads(secret)
@@ -133,6 +135,17 @@ def careers():
             cursor.execute(insert_query, (user_name, user_experience, user_position, user_ctc, resume_url, user_phone_number, user_expected_ctc))
             conn.commit()
 
+            # Call the function to send the SNS notification
+            send_sns_notification(
+                user_name, 
+                user_position, 
+                resume_url, 
+                user_experience, 
+                user_ctc, 
+                user_expected_ctc, 
+                user_phone_number
+            )
+
             # Return success message
             return f"File '{file_name}' uploaded successfully to S3 and your application has been submitted."
 
@@ -143,4 +156,3 @@ def careers():
 
     # Render the careers page template
     return render_template('careers.html')
-

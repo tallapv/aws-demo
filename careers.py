@@ -22,7 +22,7 @@ S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 # Initialize RDS connection (using IAM Role for credentials)
 rds_host = os.getenv('RDS_HOST')  # RDS endpoint URL
-rds_db_name = 'python-app-db-1'
+rds_db_name = 'python_app_db_1'
 rds_user = os.getenv('RDS_USER')  # Postgres username
 rds_port = '5432'  # Default PostgreSQL port
 secret_name = os.getenv('SECRET_NAME') # Secret to Read postgres password from

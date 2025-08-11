@@ -3,7 +3,6 @@ import datetime
 import uuid
 import socket
 import os
-from careers import careers_blueprint
 
 app = Flask(__name__)
 
